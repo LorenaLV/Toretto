@@ -1,0 +1,8 @@
+prefix=/home/edd/Toretto/catkin_ws/devel
+
+Name: vision
+Description: Description of vision
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/edd/Toretto/catkin_ws/devel/lib 
+Requires: 
