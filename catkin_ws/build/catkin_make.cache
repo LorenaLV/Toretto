@@ -1,2 +1,0 @@
-laser_scan:navigation:vision
--DCATKIN_DEVEL_PREFIX=/home/edd/Toretto/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/edd/Toretto/catkin_ws/install -G Unix Makefiles
