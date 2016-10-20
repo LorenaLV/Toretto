@@ -27,16 +27,20 @@ double vmax_int=4000;
 void callbackSpeed(const std_msgs::Int16 speed)
 {
 //     ROS_INFO("I heard Vel: linear[%lf]",msg);
-     //evaluar las velocidades máximas alcanzadas por el coche 
+     //evaluar las velocidades máximas alcanzadas por el coche
+     //velocidades positivas van en reversa 
      if (speed.data < 4000 && speed.data > -4000 ){
-        theta_punto =double(speed.data);
+        theta_punto =double(-speed.data);
 
         Vx = 2*M_PI*radio*theta_punto*(vmax/(2*M_PI*radio*vmax_int));
 
         Vy  = 0;
      }
-     else{
-      Vx=vmax;
+     else if (speed.data >= 4000){
+        Vx=-vmax;
+     }
+     else if(speed.data <=-4000){
+        Vx=vmax;
      }
       
    
