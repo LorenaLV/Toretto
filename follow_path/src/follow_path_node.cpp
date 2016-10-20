@@ -21,9 +21,19 @@ void callback_errorcalc(const nav_msgs::Path& path)
 
         /*Funcion que calcula el error*/
         error_ang=atan(x_i/y_i);
+
+        if(error_ang <= 0.57 && error_ang>=-0.57){
+           steeringP.data = error_ang*(170/0.57)+120;
+        }else if(error_ang > 0.57){
+                 steeringP.data = 290; 
+                 }else if(error_ang <- 0.57){
+                           steeringP.data=-50;
+                           }
+        
+        
         /*Funcion que calcula las nuevas velocidades y steering*/
         speedP.data = 3000;
-        steeringP.data = 290;
+        //steeringP.data = 290;
 
 }
 
