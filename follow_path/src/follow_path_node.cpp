@@ -2,14 +2,25 @@
 #include "ros/ros.h"
 #include "std_msgs/Int16.h"
 #include "nav_msgs/Path.h"
+#include "math.h"
 
 std_msgs::Int16 speedP;
 std_msgs::Int16 steeringP;
 
-void callback_errorcalc(const nav_msgs::Path::ConstPtr& msg)
+float x_i=0, y_i=0, error_ang=0;
+
+void callback_errorcalc(const nav_msgs::Path& path)
 {
         std::cout<<"Leyendo Path"<<std::endl;
+        x_i = path.poses[1].pose.position.x;
+        y_i = path.poses[1].pose.position.y;
+        std::cout << "x_i: "<< x_i << "\n"<<std::endl;
+        std::cout << "y_i: "<< y_i << "\n"<<std::endl;
+       
+        
+
         /*Funcion que calcula el error*/
+        error_ang=atan(x_i/y_i);
         /*Funcion que calcula las nuevas velocidades y steering*/
         speedP.data = 3000;
         steeringP.data = 290;
