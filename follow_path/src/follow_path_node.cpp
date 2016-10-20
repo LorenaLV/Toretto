@@ -12,8 +12,8 @@ float x_i=0, y_i=0, error_ang=0;
 void callback_errorcalc(const nav_msgs::Path& path)
 {
         std::cout<<"Leyendo Path"<<std::endl;
-        x_i = path.poses[1].pose.position.x;
-        y_i = path.poses[1].pose.position.y;
+        x_i = path.poses[0].pose.position.x;
+        y_i = path.poses[0].pose.position.y;
         std::cout << "x_i: "<< x_i << "\n"<<std::endl;
         std::cout << "y_i: "<< y_i << "\n"<<std::endl;
        
@@ -45,7 +45,7 @@ int main(int argc,char **  argv)
         ros::Publisher pubSpeed = n.advertise<std_msgs::Int16>("/manual_control/speed" ,1);
         ros::Publisher pubSteering = n.advertise<std_msgs::Int16>("/manual_control/steering",1);
         ros::Subscriber subPath = n.subscribe("/lane",1,callback_errorcalc);
-        ros::Rate loop(10);
+        ros::Rate loop(30);
 
         while(ros::ok())
         {
